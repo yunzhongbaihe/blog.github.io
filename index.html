@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10, IE=11, IE=12"/>
+    <meta name="keywords" content="写文章,看歌词,相册"/>
+    <meta name="description" content="求知若渴,虚心若愚"/>
     <title>云中白鹤-博客</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/ndialog.css">
 </head>
 <body>
 <div class="blog_top">
@@ -13,7 +18,7 @@
         <div id="blogDate" class="blog_split blog_date"></div>
     </div>
 </div>
-<div class="clearfix blog_header">
+<div class="blog_header">
     <div class="clearfix w1190">
         <div class="blog_header_left">
             <div class="blog_face"></div>
@@ -27,7 +32,16 @@
         </div>
     </div>
 </div>
+<div class="blog_music">
+    <div class="clearfix w1190">
+        <ul id="blogMusicList" class="blog_music_list"></ul>
+        <div id="blogMusicSinger" class="blog_music_singer"></div>
+        <ul id="blogMusicPlay" class="blog_music_play"></ul>
+        <audio id="blogMusicAudio">您的浏览器不支持audio标签!</audio>
+    </div>
+</div>
 <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/ndialog.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

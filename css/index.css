@@ -2,12 +2,19 @@ body {
     color: #333;
     font-size: 12px;
     font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;
+    user-select: none;
 }
 
 .clearfix:after {
     content: "";
     display: block;
     clear: both;
+}
+
+.textellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .w1190 {
@@ -89,4 +96,100 @@ body {
     line-height: 146px;
     font-size: 120px;
     text-shadow: -6px -5px 10px #888;
+}
+
+.blog_music {
+    margin-top: 2px;
+    height: 310px;
+    border-bottom: 2px dotted #e5e5e5;
+}
+
+.blog_music_list,
+.blog_music_singer,
+.blog_music_play {
+    float: left;
+    width: 33%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-left: 1px solid #e5e5e5;
+}
+
+.blog_music_list li {
+    height: 30px;
+    line-height: 30px;
+    border-top: 1px solid #ccc;
+}
+
+.blog_music_list li:first-child {
+    border-top: 0;
+}
+
+.blog_music_item div {
+    float: left;
+    padding: 0 10px;
+    width: 40%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.blog_music_item.active {
+    background-color: #10db80;
+    color: #fff;
+}
+
+.blog_music_item.active .blog_play_btn:hover {
+    color: inherit;
+}
+
+.blog_play_btn {
+    width: 20% !important;
+    text-align: center;
+    cursor: pointer;
+}
+
+.blog_play_btn:hover {
+    color: #10db80;
+}
+
+.blog_music_singer {
+    float: left;
+    padding: 10px;
+    height: 310px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.blog_music_singer img {
+    border-radius: 5px;
+}
+
+.blog_music_singer div {
+    height: 37px;
+    line-height: 37px;
+}
+
+.blog_singer_intro:hover {
+    cursor: pointer;
+    color: #10db80;
+}
+
+.blog_music_play {
+    float: left;
+    padding: 10px;
+    height: 310px;
+    overflow-y: auto;
+}
+
+.blog_music_play li {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.blog_music_play li:first-child {
+    font-size: 14px;
+    font-weight: bold;
 }
