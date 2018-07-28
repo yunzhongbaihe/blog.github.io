@@ -185,6 +185,7 @@ body {
     float: left;
     padding: 10px;
     height: 310px;
+    text-align: center;
     overflow-y: auto;
 }
 
@@ -197,4 +198,8 @@ body {
 .blog_music_play li:first-child {
     font-size: 14px;
     font-weight: bold;
+}
+
+canvas {
+    margin-top: 25px;
 }

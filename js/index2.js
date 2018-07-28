@@ -19,11 +19,10 @@ var IndexPageTwo = {
             var year = nowDate.getFullYear();
             var month = nowDate.getMonth() + 1;
             var date = nowDate.getDate();
-            var hour = nowDate.getHours();
-            var min = nowDate.getMinutes();
-            var sec = nowDate.getSeconds();
-            return year + '-' + this.addZero(month) + '-' + this.addZero(date) + ' ' +
-                this.addZero(hour) + ':' + this.addZero(min) + ':' + this.addZero(sec);
+            // var hour = nowDate.getHours();
+            // var min = nowDate.getMinutes();
+            // var sec = nowDate.getSeconds();
+            return year + '-' + this.addZero(month) + '-' + this.addZero(date);
         },
         runTime : function(){
             setInterval(function(){
@@ -43,28 +42,13 @@ var IndexPageTwo = {
         bindEvent : function(){
             var self = this;
             $('#blogMusicList').off('click').on('click', '.blog_play_btn', function(){
-                var songid = $(this).attr('data-songid');
-                var tinguid = $(this).attr('data-tinguid');
-                $(this).parents('.blog_music_item').addClass('active')
-                    .siblings().removeClass('active');
-                self.getSingerInfo(tinguid);
-                self.getLyric(songid);
-                self.playMusic(songid);
-                return false;
-            });
-
-            $('#blogMusicSinger').off('click').on('click', '.blog_singer_intro', function(){
-                var imageSrc = $(this).siblings('img').attr('src');
-                var intor = '<img src="' + imageSrc + '" width="150px" style="float:left;"/>' + $.trim($(this).find('input').val());
-                $('<div></div>').ndialog({
-                    dTitle : '查看歌手百科信息',
-                    width : 400,
-                    height : 300,
-                    isDestory : true,
-                    data : intor,
-                    isShowBtn : false,
-                    isText : true
-                }).ndialog('open');
+                // var songmid = $(this).attr('data-songmid');
+                // var albumid = $(this).attr('data-albumid');
+                var index = $(this).parents('.blog_music_item').index();
+                $(this).html('播放中').parents('.blog_music_item').addClass('active')
+                    .siblings().removeClass('active').find('.blog_play_btn').html('点击播放');
+                self.getSingerInfo(index);
+                self.playMusic(index);
                 return false;
             });
         },
@@ -92,13 +76,11 @@ var IndexPageTwo = {
                                 albumdesc : item.data.albumdesc, // 专辑描述
                                 songname : item.data.songname, // 歌曲名称
                                 songmid : item.data.songmid, // 播放歌曲ID
-                                songid : item.data.songid,
                                 singerName : item.data.singer[0].name // 歌手
                             });
                         });
                         IndexPageTwo.music.renderListHtml(result);
                     }
-                    console.log(data);
                 },
                 error : function(e){
                     console.log(e);
@@ -123,15 +105,15 @@ var IndexPageTwo = {
                     '<div class="textellipsis" title="' + item.singerName + '">' + item.singerName + '</div>' +
                     '<div class="blog_play_btn" ' +
                     'data-songmid="' + item.songmid + '" ' +
-                    'data-songid="' + item.songid + '"' +
-                    'data-albumid="' + item.albumid + '">查看</div>' +
+                    'data-albumid="' + item.albumid + '">点击播放</div>' +
                     '</li>';
             });
             $('#blogMusicList').empty().html(html);
             this.getSingerInfo(0);
-            this.getLyric(musicList[0].songid);
-            // this.playMusic(musicList[0].songid);
-            $('#blogMusicList').find('li:first-child').addClass('active');
+            //this.getLyric(musicList[0].songmid);
+            this.playMusic(0);
+            $('#blogMusicList').find('li:first-child').addClass('active')
+                .find('.blog_play_btn').html('播放中');
         },
         getSingerInfo : function(index){
             var item = this.musicList[index];
@@ -143,30 +125,16 @@ var IndexPageTwo = {
             }
             var html = '<img src="' + defaultImg + '" width="150" alt="">' +
                 '<div class="textellipsis"></div>' +
-                '<div class="textellipsis">歌手姓名: ' + item.singerName + '</div>' +
-                '<div class="textellipsis">专辑名称: ' + item.albumname + '</div>' +
-                '<div class="textellipsis">专辑描述: ' + (item.albumdesc ? item.albumdesc : '暂无') + '</div>';
+                '<div class="textellipsis">歌手姓名: ' + (item.singerName ? item.singerName : '暂无歌手') + '</div>' +
+                '<div class="textellipsis">专辑名称: ' + (item.albumname ? item.albumname : '暂无专辑') + '</div>' +
+                '<div class="textellipsis">专辑描述: ' + (item.albumdesc ? item.albumdesc : '暂无描述') + '</div>';
             $('#blogMusicSinger').empty().html(html);
         },
-        playMusic : function(songid){
-            $.ajax({
-                url : this.src,
-                type : 'get',
-                cache : false,
-                data : {
-                    method : 'baidu.ting.song.play',
-                    songid : songid
-                },
-                dataType : 'jsonp',
-                success : function(data){
-                    var filelink = data.bitrate.file_link;
-                    $('#blogMusicAudio').attr('src', filelink);
-                    document.getElementById('blogMusicAudio').play();
-                },
-                error : function(e){
-                    console.error(e);
-                }
-            });
+        playMusic : function(index){
+            var songmid = this.musicList[index].songmid;
+            var filelink = this.getSongSrc(songmid);
+            $('#blogMusicAudio').attr('src', filelink);
+            document.getElementById('blogMusicAudio').play();
         },
         getLyric : function(songid){
             var url = "https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg" +
@@ -178,43 +146,23 @@ var IndexPageTwo = {
             $.ajax({
                 url : url,
                 type : "get",
-                dataType : 'json',
-                // jsonp : "MusicJsonCallback",
+                headers : {
+                    "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
+                    "Accept" : "*/*",
+                    "Referer" : "https://y.qq.com/portal/player.html",
+                    "Accept-Language" : "zh-CN,zh;q=0.8",
+                    "Cookie" : "pgv_pvid=8455821612; ts_uid=1596880404; pgv_pvi=9708980224; yq_index=0; pgv_si=s3191448576; pgv_info=ssid=s8059271672; ts_refer=ADTAGmyqq; yq_playdata=s; ts_last=y.qq.com/portal/player.html; yqq_stat=0; yq_playschange=0; player_exist=1; qqmusic_fromtag=66; yplayer_open=1",
+                    "Host" : "c.y.qq.com"
+                },
+                dataType : 'jsonp',
+                jsonpCallback : "MusicJsonCallback",
                 success : function(data){
-
                     console.log(data);
                 },
                 error : function(e){
                     console.log(e);
                 }
             });
-            // $.ajax({
-            //     url : this.src,
-            //     type : 'get',
-            //     cache : false,
-            //     data : {
-            //         method : 'baidu.ting.song.lry',
-            //         songid : songid
-            //     },
-            //     dataType : 'jsonp',
-            //     success : function(data){
-            //         var result = data.lrcContent.replace(/\[/g, '').replace('ti', '')
-            //             .replace('ar', '').replace('al', '').replace('by', '')
-            //             .replace('offset', '')
-            //             .replace(/\d+/g, '').replace(/:/g, '').replace(/\./g, '').replace(/]/g, '')
-            //             .split('\n');
-            //         var html = '<li>' + data.title + '</li>';
-            //         $.each(result, function(i, item){
-            //             if(item !== "\r" && item){
-            //                 html += '<li>' + item + '</li>';
-            //             }
-            //         });
-            //         $('#blogMusicPlay').empty().html(html).scrollTop(0);
-            //     },
-            //     error : function(e){
-            //         console.error(e);
-            //     }
-            // });
         }
     }
 };
