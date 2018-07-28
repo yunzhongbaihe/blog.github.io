@@ -176,19 +176,13 @@ var IndexPageTwo = {
             var liWidth = lis.eq(0).outerWidth();
             var len = lis.length;
             $('#blogAlbumList').width(liWidth * len);
-            this.onLoad(function (){
-                IndexPageTwo.album.slider(liWidth);
-            });
-        },
-        onLoad : function (callback){
-            var result = [];
-            var images = $('#blogAlbumList').find('img');
-            $.each(images, function(i, image){
-                image.onload = function(){
-                    result.push(image);
-                };
-            });
-            callback();
+            //当页面加载状态改变的时候执行function
+            document.onreadystatechange = function(){
+                //当页面加载状态为完全结束时进入
+                if(document.readyState === "complete"){
+                    IndexPageTwo.album.slider(liWidth);
+                }
+            };
         },
         slider : function(liWidth){
             // 方向 默认 向左
