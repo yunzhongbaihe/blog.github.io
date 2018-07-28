@@ -187,6 +187,7 @@ body {
     height: 310px;
     text-align: center;
     overflow-y: auto;
+    border-right: 1px solid #e5e5e5;
 }
 
 .blog_music_play li {
