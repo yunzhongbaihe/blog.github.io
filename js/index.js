@@ -3,59 +3,6 @@
  * @作者: wuxiaogang
  * @日期: 2018/7/26
  */
-function ajax(params){
-    params = params || {};
-    params.data = params.data || {};
-    var json = params.jsonp ? jsonp(params) : json(params);
-
-    // jsonp请求
-    function jsonp(params){
-        //创建script标签并加入到页面中
-        var callbackName = params.jsonp;
-        var head = document.getElementsByTagName('head')[0];
-        // 设置传递给后台的回调参数名
-        params.data['callback'] = callbackName;
-        var data = formatParams(params.data);
-        var script = document.createElement('script');
-        head.appendChild(script);
-        //创建jsonp回调函数
-        window[callbackName] = function(json){
-            head.removeChild(script);
-            clearTimeout(script.timer);
-            window[callbackName] = null;
-            params.success && params.success(json);
-        };
-        //发送请求
-        script.src = params.url + '?' + data;
-        //为了得知此次请求是否成功，设置超时处理
-        if(params.time){
-            script.timer = setTimeout(function(){
-                window[callbackName] = null;
-                head.removeChild(script);
-                params.error && params.error({
-                    message : '超时'
-                });
-            }, time);
-        }
-    }
-
-    //格式化参数
-    function formatParams(data){
-        var arr = [];
-        for(var name in data){
-            arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
-        }
-        // 添加一个随机数，防止缓存
-        arr.push('v=' + random());
-        return arr.join('&');
-    }
-
-    // 获取随机数
-    function random(){
-        return Math.floor(Math.random() * 10000 + 500);
-    }
-}
-
 var IndexPage = {
     init : function(){
         IndexPage.blogDate = $('#blogDate');
@@ -89,6 +36,10 @@ var IndexPage = {
     },
     music : {
         init : function(){
+            /**
+             * 获取的是百度的音乐
+             * @type {string}
+             */
             this.src = 'http://tingapi.ting.baidu.com/v1/restserver/ting';
             this.getMusicList();
             this.bindEvent();
@@ -108,7 +59,8 @@ var IndexPage = {
 
             $('#blogMusicSinger').off('click').on('click', '.blog_singer_intro', function(){
                 var imageSrc = $(this).siblings('img').attr('src');
-                var intor = '<img src="' + imageSrc + '" width="150px" style="float:left;"/>' + $.trim($(this).find('input').val());
+                var intor = '<img src="' + imageSrc + '" width="150px" style="float:left;"/>' +
+                    $.trim($(this).find('input').val());
                 $('<div></div>').ndialog({
                     dTitle : '查看歌手百科信息',
                     width : 400,
@@ -122,51 +74,36 @@ var IndexPage = {
             });
         },
         getMusicList : function(){
-            ajax({
+            $.ajax({
                 url : this.src,
-                jsonp : 'jsonpCallback',
+                type : 'get',
+                cache : false,
                 data : {
                     method : 'baidu.ting.billboard.billList',
                     type : 1,
                     offset : 0,
                     size : 10
                 },
-                success : function(res){
-                    console.log(res);
+                dataType : 'jsonp',
+                success : function(data){
+                    var list = data.song_list;
+                    var result = [];
+                    if(list && list.length){
+                        $.each(list, function(i, item){
+                            result.push({
+                                songid : item.song_id,
+                                title : item.title,
+                                tinguid : item.ting_uid,
+                                author : item.author
+                            });
+                        });
+                        IndexPage.music.renderListHtml(result);
+                    }
                 },
-                error : function(error){
-                }  // 请求失败的回调函数
+                error : function(e){
+                    console.log(e);
+                }
             });
-            // $.ajax({
-            //     url : this.src,
-            //     type : 'get',
-            //     cache : false,
-            //     data : {
-            //         method : 'baidu.ting.billboard.billList',
-            //         type : 1,
-            //         offset : 0,
-            //         size : 10
-            //     },
-            //     dataType : 'jsonp',
-            //     success : function(data){
-            //         var list = data.song_list;
-            //         var result = [];
-            //         if(list && list.length){
-            //             $.each(list, function(i, item){
-            //                 result.push({
-            //                     songid : item.song_id,
-            //                     title : item.title,
-            //                     tinguid : item.ting_uid,
-            //                     author : item.author
-            //                 });
-            //             });
-            //             IndexPage.music.renderListHtml(result);
-            //         }
-            //     },
-            //     error : function(e){
-            //         console.log(e);
-            //     }
-            // });
         },
         renderListHtml : function(musicList){
             var html = '';
