@@ -109,10 +109,10 @@ var IndexPageTwo = {
                     '</li>';
             });
             $('#blogMusicList').empty().html(html);
-            this.getSingerInfo(0);
-            //this.getLyric(musicList[0].songmid);
-            this.playMusic(0);
-            $('#blogMusicList').find('li:first-child').addClass('active');
+            // this.getSingerInfo(0);
+            // this.getLyric(musicList[0].songmid);
+            // this.playMusic(0);
+            // $('#blogMusicList').find('li:first-child').addClass('active');
         },
         getSingerInfo : function(index){
             var item = this.musicList[index];
