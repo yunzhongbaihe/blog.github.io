@@ -124,7 +124,8 @@ var IndexPageTwo = {
             }else{
                 defaultImg = this.getPhoto(item.albumid);
             }
-            var html = '<img src="' + defaultImg + '" width="150" alt="">' +
+            var html = '<img src="' + defaultImg + '" width="150" alt="" ' +
+                'onerror="IndexPageTwo.music.onerror(this);">' +
                 '<div class="textellipsis"></div>' +
                 '<div class="textellipsis">歌手姓名: ' + (item.singerName ? item.singerName : '暂无歌手') + '</div>' +
                 '<div class="textellipsis">专辑名称: ' + (item.albumname ? item.albumname : '暂无专辑') + '</div>' +
@@ -164,6 +165,9 @@ var IndexPageTwo = {
                     console.log(e);
                 }
             });
+        },
+        onerror : function(obj){
+            obj.src = 'images/defaultLogo_150_150.png';
         }
     },
     album : {
@@ -172,7 +176,19 @@ var IndexPageTwo = {
             var liWidth = lis.eq(0).outerWidth();
             var len = lis.length;
             $('#blogAlbumList').width(liWidth * len);
-            this.slider(liWidth);
+            this.onLoad(function (){
+                IndexPageTwo.album.slider(liWidth);
+            });
+        },
+        onLoad : function (callback){
+            var result = [];
+            var images = $('#blogAlbumList').find('img');
+            $.each(images, function(i, image){
+                image.onload = function(){
+                    result.push(image);
+                };
+            });
+            callback();
         },
         slider : function(liWidth){
             // 方向 默认 向左
