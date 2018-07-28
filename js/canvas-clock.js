@@ -40,7 +40,7 @@ function drawBackground(){
         ctx.fill();
     }
 }
-
+// 时针
 function drawHour(hour, minute){
     ctx.save();
     ctx.beginPath();
@@ -50,11 +50,11 @@ function drawHour(hour, minute){
     ctx.lineCap = 'round';
     ctx.lineWidth = 5 * rem;
     ctx.moveTo(0, 10 * rem);
-    ctx.lineTo(0, -r / 2 - 20);
+    ctx.lineTo(0, -r / 2);
     ctx.stroke();
     ctx.restore();
 }
-
+// 分钟
 function drawMinute(minute){
     ctx.save();
     ctx.beginPath();
@@ -67,7 +67,7 @@ function drawMinute(minute){
     ctx.stroke();
     ctx.restore();
 }
-
+// 秒针
 function drawSecond(second){
     ctx.save();
     ctx.beginPath();

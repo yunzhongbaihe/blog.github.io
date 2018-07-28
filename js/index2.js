@@ -8,6 +8,8 @@ var IndexPageTwo = {
         IndexPageTwo.blogDate = $('#blogDate');
         IndexPageTwo.date.init();
         IndexPageTwo.music.init();
+        IndexPageTwo.album.init();
+        IndexPageTwo.articles.init();
     },
     date : {
         init : function(){
@@ -161,6 +163,57 @@ var IndexPageTwo = {
                 error : function(e){
                     console.log(e);
                 }
+            });
+        }
+    },
+    album : {
+        init : function(){
+            var lis = $('#blogAlbumList').find('li');
+            var liWidth = lis.eq(0).outerWidth();
+            var len = lis.length;
+            $('#blogAlbumList').width(liWidth * len);
+            this.slider(liWidth);
+        },
+        slider : function(liWidth){
+            // 方向 默认 向左
+            var direction = 'left';
+            // 移动的距离
+            var sliderNum = 0;
+            // 获取应该剩余的距离
+            var resDistance = liWidth * 3 - 20;
+            // 获取相册的总宽度
+            var totalAlbumWdith = $('#blogAlbumList').outerWidth();
+            setInterval(function(){
+                sliderNum += liWidth;
+                // 向左移动已经到头
+                if(totalAlbumWdith - sliderNum < resDistance + liWidth){
+                    direction = 'right';
+                    sliderNum = -sliderNum;
+                }else if(sliderNum === 0){
+                    // 向右已经已经到头
+                    direction = 'left';
+                    sliderNum = 0;
+                }
+                var runNum = (direction === 'left') ? '-' + sliderNum : sliderNum;
+                $('#blogAlbumList').css({
+                    transform : 'translateX(' + runNum + 'px)'
+                });
+            }, 3000);
+        }
+    },
+    articles : {
+        init : function(){
+            window.addEventListener('message', function(e){
+                $('#blogArticlesIframe').height(e.data);
+            }, false);
+            this.bindEvent();
+        },
+        bindEvent : function(){
+            $('#blogArticlesList').off('click').on('click', '.blog_articles_title', function(){
+                var randowNum = Math.random() * 1000;
+                var iframeSrc = $(this).attr('data-iframe-src') + '?' + randowNum;
+                $('#blogArticlesIframe').attr('src', iframeSrc);
+                return false;
             });
         }
     }

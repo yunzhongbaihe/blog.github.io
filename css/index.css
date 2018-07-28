@@ -1,13 +1,15 @@
 html, body {
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 body {
+    padding-bottom: 20px;
     color: #333;
     font-size: 12px;
     font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;
     user-select: none;
+    background: radial-gradient(circle at center, lightseagreen, cornflowerblue);
 }
 
 .clearfix:after {
@@ -22,10 +24,13 @@ body {
     text-overflow: ellipsis;
 }
 
+.overhidden {
+    overflow: hidden;
+}
+
 .w1190 {
     margin: 0 auto;
     width: 1190px;
-
 }
 
 .blog_top {
@@ -61,7 +66,6 @@ body {
 .blog_face {
     width: 150px;
     height: 150px;
-    border: 1px solid #e5e5e5;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -93,11 +97,12 @@ body {
     line-height: 37px;
     font-size: 20px;
     color: #10db80;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .blog_title_center {
-    width: 960px;
+    margin: 0 auto;
+    width: 500px;
     line-height: 146px;
     font-size: 120px;
     text-shadow: -6px -5px 10px #888;
@@ -184,6 +189,7 @@ body {
 .blog_music_play {
     float: left;
     padding: 10px;
+    width: 34%;
     height: 310px;
     text-align: center;
     overflow-y: auto;
@@ -203,4 +209,48 @@ body {
 
 canvas {
     margin-top: 25px;
+}
+
+.blog_album_list {
+    transition: all 1s linear;
+}
+
+.blog_album_list li {
+    float: left;
+    padding: 10px 20px 10px 0;
+    width: 384px;
+    height: 216px;
+}
+
+.blog_album_list li img {
+    display: block;
+    width: 100%;
+}
+
+.blog_articles_list {
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+}
+
+.blog_articles_title {
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-top: 1px solid #e5e5e5;
+    box-sizing: border-box;
+}
+
+.blog_articles_title:first-child {
+    border-top: 0;
+}
+
+.blog_articles_title.active {
+    background-color: #10db80;
+    color: #fff;
+}
+
+.blog_articles_body {
+    padding: 10px 0;
+    border-top: 2px dotted #e5e5e5;
 }

@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.articles h4, .articles p {
+    margin: 0;
+}
+
+.articles {
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.articles h4 {
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+.articles p {
+    height: 30px;
+    line-height: 30px;
+}
