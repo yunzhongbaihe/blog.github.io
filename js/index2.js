@@ -45,8 +45,8 @@ var IndexPageTwo = {
                 // var songmid = $(this).attr('data-songmid');
                 // var albumid = $(this).attr('data-albumid');
                 var index = $(this).parents('.blog_music_item').index();
-                $(this).html('播放中').parents('.blog_music_item').addClass('active')
-                    .siblings().removeClass('active').find('.blog_play_btn').html('点击播放');
+                $(this).parents('.blog_music_item').addClass('active')
+                    .siblings().removeClass('active');
                 self.getSingerInfo(index);
                 self.playMusic(index);
                 return false;
@@ -112,8 +112,7 @@ var IndexPageTwo = {
             this.getSingerInfo(0);
             //this.getLyric(musicList[0].songmid);
             this.playMusic(0);
-            $('#blogMusicList').find('li:first-child').addClass('active')
-                .find('.blog_play_btn').html('播放中');
+            $('#blogMusicList').find('li:first-child').addClass('active');
         },
         getSingerInfo : function(index){
             var item = this.musicList[index];
