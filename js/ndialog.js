@@ -119,7 +119,7 @@ var Ndialog = (function(win, doc, $){
         var opts = this.opts;
         $.ajax({
             url : opts.href,
-            type : 'post',
+            type : 'GET',
             data : opts.queryParams,
             cache : false,
             async : false,
