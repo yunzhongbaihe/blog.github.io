@@ -4,6 +4,7 @@ html, body {
 }
 
 body {
+    position: relative;
     padding-bottom: 20px;
     color: #333;
     font-size: 12px;
@@ -228,24 +229,27 @@ canvas {
 }
 
 .blog_articles_list {
+    width: 100%;
     border: 1px solid #e5e5e5;
-    border-radius: 5px;
 }
 
 .blog_articles_title {
+    float: left;
+    width: 25%;
     height: 30px;
     line-height: 30px;
     font-size: 16px;
     cursor: pointer;
-    border-top: 1px solid #e5e5e5;
     box-sizing: border-box;
+    border-right: 1px solid #e5e5e5;
 }
 
-.blog_articles_title:first-child {
-    border-top: 0;
+.blog_articles_title:nth-of-type(4n+4) {
+    border-right: 0;
 }
 
-.blog_articles_title.active {
+.blog_articles_title.active,
+.blog_articles_title:hover {
     background-color: #10db80;
     color: #fff;
 }

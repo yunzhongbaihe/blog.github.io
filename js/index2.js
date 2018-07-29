@@ -213,18 +213,29 @@ var IndexPageTwo = {
     },
     articles : {
         init : function(){
-            window.addEventListener('message', function(e){
-                $('#blogArticlesIframe').height(e.data);
-            }, false);
             this.bindEvent();
         },
         bindEvent : function(){
             $('#blogArticlesList').off('click').on('click', '.blog_articles_title', function(){
+                $(this).addClass('active').siblings().removeClass('active');
                 var randowNum = Math.random() * 1000;
                 var iframeSrc = $(this).attr('data-iframe-src') + '?' + randowNum;
-                $('#blogArticlesIframe').attr('src', iframeSrc);
+                IndexPageTwo.articles.showArticleDetail(iframeSrc);
                 return false;
             });
+        },
+        showArticleDetail : function(src){
+            $('<div></div>').ndialog({
+                nodeId : '#blogArticleDetailDlg',
+                positionType : 'fixed',
+                href : src, //=> 页面来源
+                dTitle : '查看文章详情',
+                width : 500,
+                height : 400,
+                isText : true,
+                isDestory : true, //=> 是否销毁组件
+                isShowBtn : false //=> 是否显示按钮组
+            }).ndialog('open');
         }
     }
 };
