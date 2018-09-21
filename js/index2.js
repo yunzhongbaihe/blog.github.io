@@ -4,7 +4,7 @@
  * @日期: 2018/7/26
  */
 var IndexPageTwo = {
-    init : function(){
+    init : function () {
         IndexPageTwo.blogDate = $('#blogDate');
         IndexPageTwo.date.init();
         IndexPageTwo.music.init();
@@ -12,11 +12,11 @@ var IndexPageTwo = {
         IndexPageTwo.articles.init();
     },
     date : {
-        init : function(){
+        init : function () {
             IndexPageTwo.blogDate.html(this.getDateData());
             this.runTime();
         },
-        getDateData : function(){
+        getDateData : function () {
             var nowDate = new Date();
             var year = nowDate.getFullYear();
             var month = nowDate.getMonth() + 1;
@@ -26,24 +26,24 @@ var IndexPageTwo = {
             // var sec = nowDate.getSeconds();
             return year + '-' + this.addZero(month) + '-' + this.addZero(date);
         },
-        runTime : function(){
-            setInterval(function(){
+        runTime : function () {
+            setInterval(function () {
                 IndexPageTwo.blogDate.html(IndexPageTwo.date.getDateData());
             }, 1000);
         },
-        addZero : function(num){
+        addZero : function (num) {
             return num < 10 ? '0' + num : num;
         }
     },
     music : {
-        init : function(){
+        init : function () {
             /* 获取QQ音乐 */
             this.getMusicList();
             this.bindEvent();
         },
-        bindEvent : function(){
+        bindEvent : function () {
             var self = this;
-            $('#blogMusicList').off('click').on('click', '.blog_play_btn', function(){
+            $('#blogMusicList').off('click').on('click', '.blog_play_btn', function () {
                 // var songmid = $(this).attr('data-songmid');
                 // var albumid = $(this).attr('data-albumid');
                 var index = $(this).parents('.blog_music_item').index();
@@ -54,7 +54,7 @@ var IndexPageTwo = {
                 return false;
             });
         },
-        getMusicList : function(){
+        getMusicList : function () {
             /* 最新音乐数据 */
             var url = 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg' +
                 '?g_tk=5381&uin=0&format=json&inCharset=utf-8' +
@@ -66,12 +66,12 @@ var IndexPageTwo = {
                 dataType : 'jsonp',
                 jsonp : "jsonpCallback",
                 scriptCharset : 'GBK',
-                success : function(data){
+                success : function (data) {
                     var list = data.songlist;
                     var result = [];
                     if(list && list.length){
                         list = list.slice(0, 10);
-                        $.each(list, function(i, item){
+                        $.each(list, function (i, item) {
                             result.push({
                                 albumid : item.data.albumid, // 获取对应的专辑图片
                                 albumname : item.data.albumname, // 专辑名称
@@ -84,24 +84,24 @@ var IndexPageTwo = {
                         IndexPageTwo.music.renderListHtml(result);
                     }
                 },
-                error : function(e){
+                error : function (e) {
                     console.log(e);
                 }
             });
         },
         //=> 获取专辑图片
-        getPhoto : function(albumId){
+        getPhoto : function (albumId) {
             return "http://imgcache.qq.com/music/photo/album_300/" +
                 (albumId % 100) + "/300_albumpic_" + albumId + "_0.jpg";
         },
         //=> 歌曲地址
-        getSongSrc : function(songmid){
+        getSongSrc : function (songmid) {
             return 'http://ws.stream.qqmusic.qq.com/C100' + songmid + '.m4a?fromtag=0&guid=126548448';
         },
-        renderListHtml : function(musicList){
+        renderListHtml : function (musicList) {
             this.musicList = musicList;
             var html = '';
-            $.each(musicList, function(i, item){
+            $.each(musicList, function (i, item) {
                 html += '<li class="blog_music_item">' +
                     '<div class="textellipsis" title="' + item.songname + '">' + item.songname + '</div>' +
                     '<div class="textellipsis" title="' + item.singerName + '">' + item.singerName + '</div>' +
@@ -116,7 +116,7 @@ var IndexPageTwo = {
             // this.playMusic(0);
             // $('#blogMusicList').find('li:first-child').addClass('active');
         },
-        getSingerInfo : function(index){
+        getSingerInfo : function (index) {
             var item = this.musicList[index];
             var defaultImg = '';
             if(!this.getPhoto(item.albumid)){
@@ -132,13 +132,13 @@ var IndexPageTwo = {
                 '<div class="textellipsis">专辑描述: ' + (item.albumdesc ? item.albumdesc : '暂无描述') + '</div>';
             $('#blogMusicSinger').empty().html(html);
         },
-        playMusic : function(index){
+        playMusic : function (index) {
             var songmid = this.musicList[index].songmid;
             var filelink = this.getSongSrc(songmid);
             $('#blogMusicAudio').attr('src', filelink);
             document.getElementById('blogMusicAudio').play();
         },
-        getLyric : function(songid){
+        getLyric : function (songid) {
             var url = "https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg" +
                 "?pcachetime=1494070301711" +
                 "&songmid=" + songid + "&g_tk=5381" +
@@ -158,33 +158,35 @@ var IndexPageTwo = {
                 },
                 dataType : 'jsonp',
                 jsonpCallback : "MusicJsonCallback",
-                success : function(data){
+                success : function (data) {
                     console.log(data);
                 },
-                error : function(e){
+                error : function (e) {
                     console.log(e);
                 }
             });
         },
-        onerror : function(obj){
+        onerror : function (obj) {
             obj.src = 'images/defaultLogo_150_150.png';
         }
     },
     album : {
-        init : function(){
+        init : function () {
             var lis = $('#blogAlbumList').find('li');
             var liWidth = lis.eq(0).outerWidth();
             var len = lis.length;
             $('#blogAlbumList').width(liWidth * len);
             //当页面加载状态改变的时候执行function
-            document.onreadystatechange = function(){
+            document.onreadystatechange = function () {
                 //当页面加载状态为完全结束时进入
                 if(document.readyState === "complete"){
                     IndexPageTwo.album.slider(liWidth);
                 }
             };
         },
-        slider : function(liWidth){
+        slider : function (liWidth) {
+            var timer = null;
+            var moveFlag = true;
             // 方向 默认 向左
             var direction = 'left';
             // 移动的距离
@@ -193,30 +195,49 @@ var IndexPageTwo = {
             var resDistance = liWidth * 3 - 20;
             // 获取相册的总宽度
             var totalAlbumWdith = $('#blogAlbumList').outerWidth();
-            setInterval(function(){
-                sliderNum += liWidth;
-                // 向左移动已经到头
-                if(totalAlbumWdith - sliderNum < resDistance + liWidth){
-                    direction = 'right';
-                    sliderNum = -sliderNum;
-                }else if(sliderNum === 0){
-                    // 向右已经已经到头
-                    direction = 'left';
-                    sliderNum = 0;
+            function move() {
+                if(!moveFlag){
+                    clearInterval(timer);
+                    return false;
                 }
-                var runNum = (direction === 'left') ? '-' + sliderNum : sliderNum;
-                $('#blogAlbumList').css({
-                    transform : 'translateX(' + runNum + 'px)'
-                });
-            }, 3000);
+                timer = setInterval(function () {
+                    sliderNum += liWidth;
+                    // 向左移动已经到头
+                    if(totalAlbumWdith - sliderNum < resDistance + liWidth){
+                        direction = 'right';
+                        sliderNum = -sliderNum;
+                    }else if(sliderNum === 0){
+                        // 向右已经已经到头
+                        direction = 'left';
+                        sliderNum = 0;
+                    }
+                    var runNum = (direction === 'left') ? '-' + sliderNum : sliderNum;
+                    $('#blogAlbumList').css({
+                        transform : 'translateX(' + runNum + 'px)'
+                    });
+                }, 3000);
+            }
+
+            move();
+            document.addEventListener('visibilitychange', function () {
+                // 隐藏
+                if(document.visibilityState === 'hidden'){
+                    moveFlag = false;
+                    move();
+                }else if(document.visibilityState === 'visible'){
+                    // 显示
+                    moveFlag = true;
+                    move();
+                }
+            });
         }
     },
     articles : {
-        init : function(){
+        init : function () {
             this.bindEvent();
         },
-        bindEvent : function(){
-            $('#blogArticlesList').off('click').on('click', '.blog_articles_title', function(){
+        bindEvent : function () {
+            $('#blogArticlesList').off('click').on('click', '.blog_articles_title', function () {
                 $(this).addClass('active').siblings().removeClass('active');
                 var randowNum = Math.random() * 1000;
                 var iframeSrc = $(this).attr('data-iframe-src') + '?' + randowNum;
@@ -224,7 +245,7 @@ var IndexPageTwo = {
                 return false;
             });
         },
-        showArticleDetail : function(src){
+        showArticleDetail : function (src) {
             $('<div></div>').ndialog({
                 nodeId : '#blogArticleDetailDlg',
                 positionType : 'fixed',
