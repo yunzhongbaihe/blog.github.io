@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>家鄉的情愫</title>
     <style type="text/css">
         * {
@@ -10,8 +11,10 @@
             font-family: "Courier New", "微软雅黑", "Courier New", sans-serif;
         }
 
+        html,
         body {
-            padding: 0 20px 20px;
+            width: 100%;
+            background-color: rgba(229, 229, 229, 0.1);
         }
 
         .header {
@@ -30,7 +33,7 @@
         }
 
         .article-info {
-            padding: 20px 0;
+            padding: 20px;
             text-align: center;
             overflow: hidden;
             border-top: 4px solid #31C27C;
@@ -59,6 +62,37 @@
             text-indent: 2em;
         }
     </style>
+    <script type="text/javascript">
+        ~function(){
+            var computed = function(){
+                var winW = document.documentElement.clientWidth;
+                var value = winW < 640 ? winW / 640 * 100 : null;
+                document.documentElement.style.fontSize = value + 'px';
+            };
+            computed();
+            window.addEventListener('resize', computed);
+        }();
+        (function(){
+            if(/Android|webOS|iPhone|iPad|BlackBerry/ig.test(navigator.userAgent)){
+                if(document.getElementById('mobileStyle')){
+                    return;
+                }
+                var styleTag = document.createElement('style');
+                styleTag.id = 'mobileStyle';
+                styleTag.type = 'text/css';
+                styleTag.innerHTML = 'html{font-size:100px;}\n' +
+                    '.header h1{height:1rem;line-height:1rem;font-size:0.3rem;letter-spacing:2px;}\n' +
+                    '.article-info-in>p{height:auto;font-size:0.28rem;letter-spacing:0.12rem;}\n' +
+                    'body img{float:none !important;margin: 10px 0 !important;width: 100%;height:4rem;}\n' +
+                    '.article-info-in>div>p{font-size:0.24rem;letter-spacing:1px;}';
+                document.head.appendChild(styleTag);
+            }else{
+                if(document.getElementById('mobileStyle')){
+                    document.body.removeChild(document.getElementById('mobileStyle'));
+                }
+            }
+        }());
+    </script>
 </head>
 <body>
 <div class="header">
@@ -97,7 +131,7 @@
             <p>森林是静美的。各种各样的植物和自然生态，让原始、自然呈现出生命的伟大力量。</p>
             <p>
                 根据记忆和考证，王焰山这片原始森林胸径粗50厘米以上的大松树有上千株之多。树龄均在数百年或上千年。它见证了家乡悠久的历史。不管原始森林中的老树有没有神灵，我们对它的虔敬和膜拜自古延续至今。林中的老树与人息息相关，见证着兴衰起落，也记录着悲欢离合。它的年轮里，融进了太多的经历。没有什么比一片老树更阅历丰厚了。</p>
-            <p> p上世纪五十年代末，确定建设皖赣铁路，需要大批枕木。政府选定了杞梓里王焰山这片原始森林为砍伐区。只花了一年多时间，这片原始森林的树木全部被砍光。</p>
+            <p>上世纪五十年代末，确定建设皖赣铁路，需要大批枕木。政府选定了杞梓里王焰山这片原始森林为砍伐区。只花了一年多时间，这片原始森林的树木全部被砍光。</p>
             <p>森林覆灭了，这幅前人精心呵护和打造的美丽山水画从此在家乡消逝了。痛哉！</p>
         </div>
     </div>
