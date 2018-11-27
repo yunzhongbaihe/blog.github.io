@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a:hover,
+a {
+  text-decoration: none;
+}
+
+/* 歌曲播放中状态 */
+.song-playing:before {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  background: url("../imges/icon-checked.png") no-repeat center;
+}
+
+/* 没有歌曲播放的时候，显示的状态 */
+.song-no-played {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 95%;
+  background: #fff url("../imges/music.icon.png") no-repeat center center;
+  background-size: 150px 150px;
+}
+
+/* 歌曲播放、暂停 */
+.song-play-pause {
+  background: url("../imges/music.play.png") no-repeat center center;
+  background-size: 10px;
+}
+
+/* 歌曲播放中 */
+.song-played{
+  background: url("../imges/music.playing.png") no-repeat center center;
+  background-size: 20px;
+}
