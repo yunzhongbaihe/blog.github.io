@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素水平垂直居中</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Courier New", sans-serif, '微软雅黑';
+        }
+
+        h3 {
+            line-height: 30px;
+        }
+
+        body > div {
+            margin: 0 auto 20px;
+            width: 600px;
+        }
+
+        h2 {
+            color: #f00;
+        }
+
+        /* absolute + 负 margin */
+        .wp1 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: #31C27C;
+        }
+
+        .box1 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 150px;
+            height: 150px;
+            margin-left: -75px;
+            margin-top: -75px;
+            color: #fff;
+            background-color: #ff0000;
+        }
+
+        /* absolute + 负 margin end */
+
+        /* absolute + margin auto */
+        .wp2 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: #31C27C;
+        }
+
+        .box2 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            width: 150px;
+            height: 150px;
+            color: #fff;
+            background-color: #ff0000;
+        }
+
+        /* absolute + margin auto end */
+
+        /* absolute + calc(50% - 宽度/高度) */
+        .wp3 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: #31C27C;
+        }
+
+        .box3 {
+            position: absolute;
+            left: calc(50% - 75px);
+            top: calc(50% - 75px);
+            width: 150px;
+            height: 150px;
+            color: #fff;
+            background-color: #ff0000;
+        }
+
+        /* absolute + calc(50% - 宽度/高度) end */
+
+        /* absolute + transform: translate(-50%, -50%) */
+        .wp4 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: #31C27C;
+        }
+
+        .box4 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background-color: #ff0000;
+        }
+
+        /* absolute + transform: translate(-50%, -50%) end */
+
+        /* line-height */
+        .wp5 {
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 0;
+            background-color: #31C27C;
+        }
+
+        .box5 {
+            display: inline-block;
+            font-size: 16px;
+            color: #fff;
+            line-height: initial;
+            text-align: left;
+            background-color: #ff0000;
+        }
+
+        /* line-height end */
+
+        /* writing-mode */
+        .wp6 {
+            width: 300px;
+            height: 300px;
+            color: #fff;
+            writing-mode: vertical-lr;
+            text-align: center;
+            background-color: #31C27C;
+        }
+
+        .inner {
+            writing-mode: horizontal-tb;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .box6 {
+            display: inline-block;
+            margin: auto;
+            text-align: left;
+            background-color: #ff0000;
+        }
+
+        /* writing-mode end */
+
+        /* CSS table-cell */
+        .wp7 {
+            display: table-cell;
+            width: 300px;
+            height: 300px;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #31C27C;
+        }
+
+        .box7 {
+            display: inline-block;
+            background-color: #ff0000;
+        }
+
+        /* CSS table-cell end */
+
+        /* flex */
+        .wp8 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+            color: #fff;
+            background-color: #31C27C;
+        }
+
+        .box8 {
+            background-color: #ff0000;
+        }
+
+        /* flex end */
+
+        /* grid */
+        .wp9 {
+            display: grid;
+            width: 300px;
+            height: 300px;
+            color: #fff;
+            background-color: #31C27C;
+        }
+
+        .box9 {
+            align-self: center;
+            justify-self: center;
+            background-color: #ff0000;
+        }
+
+        /* grid end */
+    </style>
+</head>
+<body>
+<!--
+居中的元素固定宽高
+    absolute + 负 margin
+    absolute + margin auto
+    absolute + cale(50% - 宽度/高度)
+
+居中的元素不固定宽高
+    absolute + transform: translate(-50%, -50%)
+    line-height
+    writing-mode
+    CSS table-cell
+    flex
+    grid
+-->
+<div>
+    <h2>居中的元素固定宽高</h2>
+    <h3>一、absolute + 负 margin</h3>
+    <div class="wp1">
+        <div class="box1">child</div>
+    </div>
+
+    <h3>二、absolute + margin auto</h3>
+    <div class="wp2">
+        <div class="box2">child</div>
+    </div>
+
+    <h3>三、absolute + calc(50% - 宽度/高度的一半)</h3>
+    <div class="wp3">
+        <div class="box3">child</div>
+    </div>
+</div>
+
+<div>
+    <h2>居中的元素不固定宽高</h2>
+    <h3>一、absolute + transform: translate(-50%, -50%)</h3>
+    <div class="wp4">
+        <div class="box4">child</div>
+    </div>
+
+    <h3>二、line-height</h3>
+    <div class="wp5">
+        <div class="box5">child</div>
+    </div>
+
+    <h3>三、writing-mode</h3>
+    <div class="wp6">
+        <div class="inner">
+            <div class="box6">child</div>
+        </div>
+    </div>
+
+    <h3>四、CSS table-cell</h3>
+    <div class="wp7">
+        <div class="box7">child</div>
+    </div>
+
+    <h3>五、flex</h3>
+    <div class="wp8">
+        <div class="box8">child</div>
+    </div>
+
+    <h3>六、grid</h3>
+    <div class="wp9">
+        <div class="box9">child</div>
+    </div>
+</div>
+</body>
+</html>
