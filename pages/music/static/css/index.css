@@ -1,18 +1,5 @@
 @charset "UTF-8";
 
-* {
-  margin: 0;
-  padding: 0;
-  color: #333;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 html {
   margin: 0 auto;
   max-width: 640px;
@@ -20,153 +7,216 @@ html {
   font-size: 100px;
 }
 
-a, a:hover, a:active, a:visited, a:link, a:focus {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  background: none;
-  text-decoration: none;
+.mui-content {
+  padding-bottom: 1.02rem;
+  background-color: #fff;
 }
 
-ul li {
-  list-style: none;
-}
-
-/* song-classify */
-.song-classify {
-  background-color: #F56C6C;
-  border-bottom: 1px solid #C20C0C;
-  overflow: hidden;
-}
-
-.song-classify li {
-  float: left;
-  width: 25%;
-  font-size: 0.32rem;
-  text-align: center;
-  line-height: 0.48rem;
-}
-
-.song-classify li.active a {
-  color: #C20C0C;
-  font-weight: bold;
-}
-
-.song-classify a {
+.mui-table-view-cell.mui-active {
   color: #fff;
+  background-color: #1698DC;
 }
 
-.song-classify a.active {
-  color: #000;
+.mui-table-view-cell:after {
+  left: 0;
 }
 
-/* main-page */
-.main-page {
-  padding-bottom: 0.90rem;
-}
-
-/* song-list */
-.song-list li {
-  padding: 0 0.1rem;
-  line-height: 0.8rem;
-  font-size: 0.3rem;
+.song-list .mui-table-view-cell {
+  font-size: 0.28rem;
   white-space: nowrap;
   overflow: hidden;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
 
-.song-list li:nth-child(odd) {
-  background-color: #E8E8E8;
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+  margin-top: 0;
+  font-size: 0.28rem;
 }
 
-.song-list li:nth-child(even) {
-  background-color: #F4F4F4;
+body {
+  background-color: #fff;
 }
 
-/* bottom-nav */
+.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+  padding: 0 0.3rem;
+}
+
+.mui-grid-view.mui-grid-9 .mui-table-view-cell.mui-active {
+  background-color: #C20C0C;
+}
+
+.mui-grid-view.mui-grid-9 .mui-table-view-cell.mui-active .mui-media-body {
+  color: #fff;
+}
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: table;
+  table-layout: fixed;
   width: 100%;
-  height: 0.9rem;
-  line-height: 0.9rem;
-  font-size: 0.28rem;
-  border-top: 1px solid #ddd;
-  background-color: #ddd;
+  height: 1rem;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+  box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .bottom-nav a {
-  display: block;
-  width: 0.44rem;
-  height: 0.44rem;
+  display: table-cell;
+  overflow: hidden;
+  width: 1%;
+  height: 1rem;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #000;
+  font-size: 0.24rem;
 }
 
-.bottom-nav .home {
-  background: url("../images/icon-home.png") no-repeat center center;
-  background-size: cover;
+.bottom-nav a.active {
+  color: #1698DC;
 }
 
-.bottom-nav .home.active {
+.bottom-nav a.active .icon-home {
   background-image: url("../images/icon-home-active.png");
 }
 
-.bottom-nav .search {
-  background: url("../images/icon-search.png") no-repeat center center;
-  background-size: cover;
-}
-
-.bottom-nav .search.active {
+.bottom-nav a.active .icon-search {
   background-image: url("../images/icon-search-active.png");
 }
 
-/* Song-play */
-.song-play {
-  position: relative;
-  height: 100%;
+.bottom-nav a.active .icon-play {
+  background-image: url("../images/icon-play-active.png");
+}
+
+.bottom-nav .icon {
+  display: block;
+  margin: 0.06rem auto;
+  width: 0.48rem;
+  height: 0.48rem;
+}
+
+.bottom-nav .icon.icon-home {
+  background: url("../images/icon-home.png") no-repeat center center;
+  background-size: 100%;
+}
+
+.bottom-nav .icon.icon-search {
+  background: url("../images/icon-search.png") no-repeat center center;
+  background-size: 100%;
+}
+
+.bottom-nav .icon.icon-play {
+  background: url("../images/icon-play.png") no-repeat center center;
+  background-size: 100%;
+}
+
+.header {
+  position: fixed;
   z-index: 10;
-  background-color: #fff;
+  right: 0;
+  left: 0;
+  height: 44px;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+  border-bottom: 0;
+  background-color: #f7f7f7;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+  box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-.song-play .top {
-  padding: 0 0.2rem;
-  height: 0.7rem;
-  line-height: 0.7rem;
-  font-size: 0.3rem;
-  text-align: center;
-  background-color: #e5e5e5;
+.header.nav {
+  top: 0;
+  -webkit-box-shadow: 0 1px 6px #ccc;
+  box-shadow: 0 1px 6px #ccc;
 }
 
-.song-play a {
+.header .back {
   float: left;
-  font-size: 0.7rem;
+  padding: 0.2rem;
+  margin-left: -0.2rem;
 }
 
-.song-play .lrc-list-wrap {
-  height: 10.2rem;
-  overflow: hidden;
+.header .icon {
+  display: block;
+  width: 0.48rem;
+  height: 0.48rem;
 }
 
-.song-play .lrc-list {
-  transition: all .3s linear;
+.header .icon.icon-back {
+  background: url("../images/icon-back-active.png") no-repeat center center;
+  background-size: 100%;
 }
 
-.song-play li {
-  padding: 0 0.1rem;
-  font-size: 0.3rem;
-  line-height: 0.6rem;
+.header .title {
+  position: absolute;
+  right: 0.8rem;
+  left: 0.8rem;
+  margin: 0;
+  width: auto;
+  font-size: 0.28rem;
+  font-weight: 500;
+  line-height: 0.88rem;
   text-align: center;
-  transition: all .3s linear;
+  color: #000;
   white-space: nowrap;
   overflow: hidden;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
 
-.song-play li.active {
-  color: #C20C0C;
+.song-play .mui-table-view-cell {
+  font-size: 0.28rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  transition: all .3s linear;
+}
+
+.song-play .mui-table-view-cell.active {
+  color: #1698DC;
   font-weight: bold;
+}
+
+.song-play .mui-table-view-cell:after {
+  display: none;
+}
+
+.lrc-list-wrap {
+  padding: 0.88rem 0 1.02rem;
+  background-color: #fff;
+  height: 10.32rem;
+  overflow: hidden;
+}
+
+.lrc-list-wrap ul {
+  transition: all .3s linear;
+}
+
+.music-none {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 2rem;
+  height: 2rem;
+  background: url("../images/icon-music.png") no-repeat center center;
+  background-size: 100%;
+  z-index: 10;
+}
+
+.song-play .mui-table-view:before,
+.song-play .mui-table-view:after {
+  display: none;
 }
