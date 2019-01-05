@@ -8,7 +8,7 @@ var IndexPageTwo = {
         IndexPageTwo.blogDate = $('#blogDate');
         IndexPageTwo.date.init();
         IndexPageTwo.music.init();
-        IndexPageTwo.album.init();
+        // IndexPageTwo.album.init();
         IndexPageTwo.articles.init();
     },
     date : {
@@ -124,7 +124,7 @@ var IndexPageTwo = {
             }else{
                 defaultImg = this.getPhoto(item.albumid);
             }
-            var html = '<img src="' + defaultImg + '" width="150" alt="" ' +
+            var html = '<img src="' + defaultImg + '" width="50%" alt="" ' +
                 'onerror="IndexPageTwo.music.onerror(this);">' +
                 '<div class="textellipsis"></div>' +
                 '<div class="textellipsis">歌手姓名: ' + (item.singerName ? item.singerName : '暂无歌手') + '</div>' +
