@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10, IE=11, IE=12"/>
-    <meta name="referrer" content="no-referrer" />
+    <meta name="referrer" content="no-referrer"/>
     <meta name="keywords" content="写文章,看歌词,相册"/>
     <meta name="description" content="求知若渴,虚心若愚"/>
     <title>云中白鹤-博客</title>
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/ndialog.css">
     <link rel="stylesheet" href="css/articles.css">
@@ -68,6 +69,7 @@
         </div>
     </div>
 </div>
+<div class="blog_h20"></div>
 <!-- 音乐 -->
 <div class="blog_music">
     <div class="clearfix w1190">
@@ -81,40 +83,42 @@
         <audio id="blogMusicAudio">您的浏览器不支持audio标签!</audio>
     </div>
 </div>
-<!-- 相册 -->
-<div class="blog_album">
-    <div class="clearfix w1190 overhidden">
-        <ul id="blogAlbumList" class="clearfix blog_album_list">
-            <li><img src="img/1.jpg" alt=""></li>
-            <li><img src="img/2.jpg" alt=""></li>
-            <li><img src="img/3.jpg" alt=""></li>
-            <li><img src="img/4.jpg" alt=""></li>
-            <li><img src="img/5.jpg" alt=""></li>
-            <li><img src="img/6.jpg" alt=""></li>
-            <li><img src="img/7.jpg" alt=""></li>
-            <li><img src="img/8.jpg" alt=""></li>
-            <li><img src="img/9.jpg" alt=""></li>
-            <li><img src="img/10.jpg" alt=""></li>
-        </ul>
+<div class="blog_h20"></div>
+<!-- 轮播图 与 文章 -->
+<div class="w1190 blog_flex">
+    <div class="swiper-container blog_slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/4.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/5.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/6.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/7.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/8.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/9.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/10.jpg" alt=""></div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
-</div>
-<!-- 文章 -->
-<div class="blog_articles">
-    <div class="w1190">
-        <ul id="blogArticlesList" class="clearfix blog_articles_list">
+    <div class="blog_articles">
+        <ul id="blogArticlesList" class="blog_articles_list blog_flex">
             <li class="textellipsis blog_articles_title"
-                data-iframe-src="articles/write_a_poem_for_you.html">《为你写诗·①》
-            </li>
+                data-iframe-src="articles/write_a_poem_for_you.html">《为你写诗·①》</li>
             <li class="textellipsis blog_articles_title"
-                data-iframe-src="articles/april_day.html">《你是人间的四月天》
-            </li>
+                data-iframe-src="articles/april_day.html">《你是人间的四月天》</li>
         </ul>
     </div>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/swiper.js"></script>
 <script src="js/canvas-clock.js"></script>
 <script src="js/ndialog.js"></script>
-<script src="js/index2.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
