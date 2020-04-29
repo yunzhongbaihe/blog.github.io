@@ -40,6 +40,7 @@ function drawBackground(){
         ctx.fill();
     }
 }
+
 // 时针
 function drawHour(hour, minute){
     ctx.save();
@@ -54,6 +55,7 @@ function drawHour(hour, minute){
     ctx.stroke();
     ctx.restore();
 }
+
 // 分钟
 function drawMinute(minute){
     ctx.save();
@@ -67,6 +69,7 @@ function drawMinute(minute){
     ctx.stroke();
     ctx.restore();
 }
+
 // 秒针
 function drawSecond(second){
     ctx.save();

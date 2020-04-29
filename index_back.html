@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10, IE=11, IE=12"/>
+    <meta name="referrer" content="no-referrer"/>
+    <meta name="keywords" content="写文章,看歌词,相册"/>
+    <meta name="description" content="求知若渴,虚心若愚"/>
+    <title>云中白鹤-博客</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/ndialog.css">
+    <link rel="stylesheet" href="css/articles.css">
+</head>
+<body>
+
+<!-- 顶部 -->
+<div class="blog_top">
+    <div class="clearfix w1190">
+        <div class="blog_mark">云中白鹤-博客</div>
+        <div id="blogDate" class="blog_split blog_date"></div>
+    </div>
+</div>
+<!-- 头部 -->
+<div class="blog_header">
+    <div class="clearfix w1190">
+        <div class="blog_header_left">
+            <div class="blog_face"></div>
+        </div>
+        <div class="blog_header_right">
+            <div class="clearfix blog_title">
+                <div class="blog_title_left">天地玄黄</div>
+                <div class="blog_title_left">宇宙洪荒</div>
+                <div class="blog_title_left">日月盈昃</div>
+                <div class="blog_title_left">辰宿列张</div>
+                <div class="blog_title_left">寒来暑往</div>
+                <div class="blog_title_left">秋收冬藏</div>
+                <div class="blog_title_left">闰余成岁</div>
+                <div class="blog_title_left">律吕调阳</div>
+                <div class="blog_title_left">云腾致雨</div>
+                <div class="blog_title_left">露结为霜</div>
+                <div class="blog_title_left">金生丽水</div>
+                <div class="blog_title_left">玉出昆冈</div>
+                <div class="blog_title_left">剑号巨阙</div>
+                <div class="blog_title_left">珠称夜光</div>
+                <div class="blog_title_left">果珍李柰</div>
+                <div class="blog_title_left">菜重芥姜</div>
+                <div class="blog_title_left">海咸河淡</div>
+                <div class="blog_title_left">鳞潜羽翔</div>
+                <div class="blog_title_left">龙师火帝</div>
+                <div class="blog_title_left">鸟官人皇</div>
+                <div class="blog_title_left">始制文字</div>
+                <div class="blog_title_left">乃服衣裳</div>
+                <div class="blog_title_left">推位让国</div>
+                <div class="blog_title_left">有虞陶唐</div>
+                <div class="blog_title_left">吊民伐罪</div>
+                <div class="blog_title_left">周发殷汤</div>
+                <div class="blog_title_left">坐朝问道</div>
+                <div class="blog_title_left">垂拱平章</div>
+                <div class="blog_title_left">爱育黎首</div>
+                <div class="blog_title_left">臣伏戎羌</div>
+                <div class="blog_title_left">遐迩一体</div>
+                <div class="blog_title_left">率宾归王</div>
+                <div class="blog_title_left">鸣凤在竹</div>
+                <div class="blog_title_left">白驹食场</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blog_h20"></div>
+<!-- 音乐 -->
+<div class="blog_music">
+    <div class="clearfix w1190">
+        <ul id="blogMusicList" class="blog_music_list"></ul>
+        <div id="blogMusicSinger" class="blog_music_singer">
+            <img src="images/defaultLogo_150_150.png" class="default_image" alt="">
+        </div>
+        <div id="blogMusicPlay" class="blog_music_play">
+            <canvas id="canvas" width="240" height="240"></canvas>
+        </div>
+        <audio id="blogMusicAudio">您的浏览器不支持audio标签!</audio>
+    </div>
+</div>
+<div class="blog_h20"></div>
+<!-- 轮播图 与 文章 -->
+<div class="w1190 blog_flex">
+    <div class="swiper-container blog_slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/4.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/5.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/6.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/7.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/8.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/9.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/10.jpg" alt=""></div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+    <div class="blog_articles">
+        <ul id="blogArticlesList" class="blog_articles_list blog_flex">
+            <li class="textellipsis blog_articles_title"
+                data-iframe-src="articles/write_a_poem_for_you.html">《为你写诗·①》</li>
+            <li class="textellipsis blog_articles_title"
+                data-iframe-src="articles/april_day.html">《你是人间的四月天》</li>
+        </ul>
+    </div>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/swiper.js"></script>
+<script src="js/canvas-clock.js"></script>
+<script src="js/ndialog.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

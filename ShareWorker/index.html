@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分享</title>
+</head>
+<body>
+<button id="shareToQq">分享到QQ好友</button>
+<button id="shareToWeibo">分享到微博</button>
+<button id="shareToQzone">分享到QQ空间</button>
+<script src="shareWorker.js"></script>
+<script type="text/javascript">
+    document.getElementById('shareToQq').onclick = function(){
+        ShareWorker.qq({
+            url: 'https://yxrc.jfh.com/zyyx/zyyxdetail.html?id=93496&f=zyyx',
+            title: '企业管理信息系统',
+            summary: '解放号战疫优选优质服务，分享给你，快来看看吧！我们共同守护健康！',
+            pics: 'https://svcimg.jointforce.com/jfservices/file/prod/93879/pic/1_75a3a5c8-3c0f-4bd5-904f-fed44ec013d2.jpg',
+        });
+    };
+    document.getElementById('shareToWeibo').onclick = function(){
+        ShareWorker.weibo({
+            url: 'https://yxrc.jfh.com/zyyx/zyyxdetail.html?id=93496&f=zyyx',
+            title: '企业管理信息系统\n\n解放号战疫优选优质服务，分享给你，快来看看吧！我们共同守护健康！',
+            pic: 'https://svcimg.jointforce.com/jfservices/file/prod/93879/pic/1_75a3a5c8-3c0f-4bd5-904f-fed44ec013d2.jpg',
+        });
+    };
+    document.getElementById('shareToQzone').onclick = function(){
+        ShareWorker.qzone({
+            url: 'https://yxrc.jfh.com/zyyx/zyyxdetail.html?id=93496&f=zyyx',
+            title: '企业管理信息系统',
+            pics: 'https://svcimg.jointforce.com/jfservices/file/prod/93879/pic/1_75a3a5c8-3c0f-4bd5-904f-fed44ec013d2.jpg',
+            summary: '解放号战疫优选优质服务，分享给你，快来看看吧！我们共同守护健康！',
+        });
+    };
+</script>
+</body>
+</html>

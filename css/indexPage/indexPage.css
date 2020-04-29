@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.w1200 {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+body {
+    font-size: 14px;
+    font-family: "Microsoft JhengHei", sans-serif, SansSerif;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.index_page_top {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    background-color: #e5e5e5;
+}
+
+.index_page_top .page_top_mark {
+    float: left;
+}
+
+.index_page_top .page_top_date {
+    float: left;
+}
+
+.index_page_split:before {
+    content: '|';
+    display: inline-block;
+    margin: 0 5px;
+    color: #888;
+}
+
+.index_page_h20 {
+    display: block;
+    height: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #38f;
+}
