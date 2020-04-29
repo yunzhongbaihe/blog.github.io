@@ -66,7 +66,7 @@ var ShareWorker = {
 			callback && callback(this);
 			img = null;
 		};
-		img.crossOrigin = '*'; //可选值：anonymous，*
+		img.crossOrigin = "Anonymous";
 		img.src = imgSrc;
 	},
 };
