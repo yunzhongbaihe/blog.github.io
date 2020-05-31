@@ -5,55 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://yunzhongbaihe.github.io/rml-docs/assets/img/logo.png">
     <title>家乡的情愫</title>
+    <link rel="stylesheet" href="css/base.css"/>
     <style type="text/css">
-        *{margin:0;padding:0;font-family:"JetBrains Mono","Courier New","微软雅黑","Courier New",sans-serif;box-sizing:border-box;}
-        html,body{width:100%;}
-        h1{text-align:center;font-size:30px;line-height:60px;color:#555;}
-        .header span{padding-left:150px}
-        .article-info{padding:20px;text-align:center;overflow:hidden;border-top:2px solid #E6E6E6}
-        .article-info img{float:left;margin:10px}
-        .article-info-in{text-align:left;line-height:30px}
-        .article-info-in > p{height:50px;line-height:38px;text-align:center;font-size:18px;font-weight:bold;color:#555;}
-        .article-info-in div p{text-indent:2em;color:#666;}
+        .article_h1{text-align:center;font-size:30px;line-height:60px;color:#555;}
+        .article_info{padding:20px;text-align:center;overflow:hidden;border-top:2px solid #E6E6E6}
+        .article_info img{float:left;margin:10px}
+        .article_info_in{text-align:left;line-height:30px}
+        .article_info_in > p{height:50px;line-height:38px;text-align:center;font-size:18px;font-weight:bold;color:#555;}
+        .article_info_in div p{text-indent:2em;color:#666;}
     </style>
-    <script type="text/javascript">
-        ~function(){
-            var computed = function(){
-                var winW = document.documentElement.clientWidth;
-                var value = winW < 640 ? winW / 640 * 100 : null;
-                document.documentElement.style.fontSize = value + 'px';
-            };
-            computed();
-            window.addEventListener('resize', computed);
-        }();
-        (function(){
-            if(/Android|webOS|iPhone|iPad|BlackBerry/ig.test(navigator.userAgent)){
-                if(document.getElementById('mobileStyle')){
-                    return;
-                }
-                var styleTag = document.createElement('style');
-                styleTag.id = 'mobileStyle';
-                styleTag.type = 'text/css';
-                styleTag.innerHTML = `html{font-size:100px;}
-                    body{padding-top:1.2rem;}
-                    h1{position:fixed;top:0;left:0;width:100%;z-index:5;background:#fff;line-height:1rem;font-size:0.4rem;letter-spacing:2px;box-shadow:0 0 10px 1px #e6e6e6;}
-                    .article-info-in>p{height:auto;font-size:0.28rem;letter-spacing:0.12rem;}
-                    body img{float:none !important;margin: 10px 0 !important;width: 100%;height:4rem;}
-                    .article-info{padding:0.3rem;}
-                    .article-info-in>div>p{font-size:0.3rem;letter-spacing:1px;line-height:0.4rem;}`;
-                document.head.appendChild(styleTag);
-            }else{
-                if(document.getElementById('mobileStyle')){
-                    document.body.removeChild(document.getElementById('mobileStyle'));
-                }
-            }
-        }());
-    </script>
+    <script type="text/javascript" src="js/mobile.js"></script>
+    <link rel="stylesheet" media="screen and (min-width:320px) and (max-width:640px)" href="css/mobile.css"/>
 </head>
-<body>
-<h1>家乡的情愫</h1>
-<div class="article-info" style="border-top:0;padding-top:0;">
-    <div class="article-info-in">
+<body class="article_body">
+<h1 class="article_h1">家乡的情愫</h1>
+<div class="article_info" style="border-top:0;padding-top:0;">
+    <div class="article_info_in">
         <div>
             <p>家乡杞梓里位于歙县东部、旱南杭徽公路线上，距县城40公里。村现有708户，总人口为2026人。她是一个历史悠久，有着浓郁徽文化的千年古村落。这里四季分明，光照充足，雨量充沛，温暖温润；这里群山环抱，五行到位，水系发达，溪涧纵横；这里粉墙黛瓦，马头楚楚。栖息于此的先人顺适山水自然，精心营构，打造了一个最佳宜居环境。</p>
             <p>千百年的古村落，就在这无数个日日夜夜里，用自己的羽翼呵护着每一个子嗣，又迎来送往着一个个鲜活的生命，滋养一代代子民在这贫瘠的山地里繁衍生息。家乡的现存既印记着先人奋斗、奉献的踪迹和徽文化的传承，也生动地记载了新时代，新社会给我们带来的翻天覆地的变化。回忆家乡，有多少往事需要去回顾，作为王茂荫的故乡，这里有着太多值得称道的故事。</p>
@@ -64,9 +31,9 @@
     <img src="images/image001.jpg" width="100%" height="500" style="margin:10px 0 0;" alt="">
 </div>
 
-<div class="article-info">
+<div class="article_info">
     <img src="images/image002.jpg" width="475" alt="" style="float: right;">
-    <div class="article-info-in">
+    <div class="article_info_in">
         <p style="letter-spacing:1px;">王焰山的原始森林见证了家乡悠久的历史</p>
         <div>
             <p>每当我路过双龙坑第一座石桥时，都会勾起我对王焰山这片原始森林的思恋。</p>
@@ -83,8 +50,8 @@
     </div>
 </div>
 
-<div class="article-info">
-    <div class="article-info-in">
+<div class="article_info">
+    <div class="article_info_in">
         <img src="images/image004.jpg" width="475" style="float:right;" alt="">
         <p style="letter-spacing: 1px;">家乡曾经是枣乡</p>
         <div>
@@ -103,9 +70,9 @@
     </div>
 </div>
 
-<div class="article-info">
+<div class="article_info">
     <img src="images/image006.jpg" width="475" style="float: right;" alt="">
-    <div class="article-info-in">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px;">昌源河是我们的母亲河</p>
         <div>
             <p>在过去的岁月里，家乡虽然比较穷，但那未加雕饰的自然风光都也展现了一种淳朴的美。发源于清凉峰的昌源河流经杞梓里逶迤50多里，形成宽60多米河面的大溪流。由于境内东有发源于老尖山的英坑河，南有发源于蚕豆山的双龙坑，西有发源于大障山的社溪。极大的丰富了昌源河的水量。它既水量充沛，又清丽无比。昌源河是我们的母亲河。碧水滚滚流过村前，她不仅滋养着全村的生灵，而且筑起了一道亮丽的风景线。昌源河的水清极了。清得一眼就可以望到河底的五颜六色，圆润光滑的鹅卵石及游动的鱼虾。清晨朝阳为昌源河镀上了一层金辉；傍晚，彩霞为昌源河披了一层红纱；深夜，弯月象一只银色的小船在河中穿行。微风吹拂，河水就泛起层层涟漪，像一片浮着的银鳞，像巧手的渔家少女纺织的网……啊，在我心中，家乡的昌源河是条最美的河！</p>
@@ -123,9 +90,9 @@
     </div>
 </div>
 
-<div class="article-info">
+<div class="article_info">
     <img src="images/image008.jpg" width="475" style="float: right;" alt="">
-    <div class="article-info-in">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px">家乡多祠堂、多庙宇、多黛墙老屋</p>
         <div>
             <p>建筑是“凝固”的音乐。徽州建筑不仅是一首首优美的音乐，还是一幅幅迷人的风情画。家乡是一个多祠堂、多庙宇、多黛墙老屋的古村落。他们的静静伫立，无不记录着历史的辉煌、厚重和沧桑。千百年来，老祖宗对家园的辛勤劳作和智慧贡献，给后人留下了一笔丰富的建筑遗产。</p>
@@ -150,8 +117,8 @@
     </div>
 </div>
 
-<div class="article-info">
-    <div class="article-info-in">
+<div class="article_info">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px">丰富多彩的家乡文化</p>
         <div>
             <p>家乡的文化，特别是群众文化，历来丰富多彩。明朝后期和清朝，兴建祠堂和庙宇，搭建木料结构的活动戏台。村中有大事，如十年目连、祠堂祭祀、菩萨开光、庆祝抗战胜利等，都请戏班来唱戏。</p>
@@ -179,8 +146,8 @@
     </div>
 </div>
 
-<div class="article-info">
-    <div class="article-info-in">
+<div class="article_info">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px;">长足发展的医疗卫生事业</p>
         <div>
             <p>家乡杞梓里距县城40公里，又属深山区，解放前乃至解放后的五十年代，长期处于缺医少药的状态。本村的村民们生病，能将就的就将就，拼不过的就到附近的齐武、苏村和定潭就医。</p>
@@ -198,8 +165,8 @@
     </div>
 </div>
 
-<div class="article-info">
-    <div class="article-info-in">
+<div class="article_info">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px;">一度辉煌的乡镇企业</p>
         <div>
             <p>家乡杞梓里的地方企业不仅起步早，而且也办得出类拔萃。远在五十年代末，就办有钢铁冶炼厂（大跃进产物，设有高炉10多个，县委还在村里开了现场会）、水力、火力发电厂、粮食加工厂、密枣加工厂和食品加工厂。</p>
@@ -234,9 +201,9 @@
     </div>
 </div>
 
-<div class="article-info">
+<div class="article_info">
     <img src="images/image026.jpg" width="475" height="300" alt="">
-    <div class="article-info-in">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px;">聚族而居的典型村庄</p>
         <div>
             <p>杞梓里村落形成历史久远，南宋绍兴年间达到鼎盛，有“千灶万丁”之称，居有“方、吴、鲍、赵、董、祝、程、章”八大姓氏，此外还有“孙、徐、马、江”等姓。由于人口稠密，土地稀少瘠薄，生存空间限制，不得不向外迁徙，加上封建社会战乱频繁，人口逐渐减少，村庄版图随之缩小。</p>
@@ -271,8 +238,8 @@
     </div>
 </div>
 
-<div class="article-info">
-    <div class="article-info-in">
+<div class="article_info">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px;">经济与商务活动</p>
         <div>
             <p>“七山二水一分田”这句徽州俗谚是对家乡杞梓里的真实写照。解放初期，人均耕地不足二分（0.2亩），光靠务农不足以为生，因此必须去外地经商。其一维持生计，其二建功立业，光耀门庭。</p>
@@ -301,9 +268,9 @@
     </div>
 </div>
 
-<div class="article-info">
+<div class="article_info">
     <img src="images/image030.jpg" width="475" alt="">
-    <div class="article-info-in">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px;">王茂荫——杞梓里人的自豪和骄傲</p>
         <div>
             <p>今年是王茂荫诞辰220周年，也是革命导师卡尔·马克思诞辰200周年。150年前，凭借当时先进的财政货币思想，王茂荫成为走进马克思经典著作《资本论》的唯一中国人，这是家乡人民的自豪和骄傲。</p>
@@ -333,9 +300,9 @@
     </div>
 </div>
 
-<div class="article-info">
+<div class="article_info">
     <img src="images/image031.jpg" width="475" alt="">
-    <div class="article-info-in">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px;">独具魅力的杞梓里古街</p>
         <div>
             <p>在家乡众多的文物中，古街是保护得最完好的瑰宝。从孩童开始，我对这条古街就有着深厚的感情，并充满了敬意。和附近乡村相比，古街的规模、布局和完整性等方面，堪称之首。</p>
@@ -369,9 +336,9 @@
     </div>
 </div>
 
-<div class="article-info">
+<div class="article_info">
     <img src="images/image035.jpg" width="475" style="float: right;" alt="">
-    <div class="article-info-in">
+    <div class="article_info_in">
         <p style="letter-spacing: 1px;">一张从农村走向城市的创业名片</p>
         <div>
             <p>上海利宏企业有限公司已经在创业的道路上走过了30周年。公司于2017年12月23日在上海举行了隆重的庆典大会，细数成绩，展望未来，大家欢聚一堂，决心砥励前行，继续谱写“利宏家园”的新篇章，创造更加辉煌的明天。</p>
