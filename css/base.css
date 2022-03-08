@@ -10,7 +10,16 @@ html, body {
   min-height: 100%;
 }
 
-body {
+body:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
   background: url("../images/index.png") no-repeat 0 -12px;
   background-size: 100% calc(100% + 24px);
+  -webkit-filter: opacity(55%);
+  filter: opacity(55%);
 }

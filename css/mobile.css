@@ -2,6 +2,9 @@
 
 body {
   overscroll-behavior-y: none;
+}
+
+body:before {
   background-size: 400% calc(100% + 24px);
 }
 
